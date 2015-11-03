@@ -1,22 +1,6 @@
-![jclass](misc/logo.png)
-========================
+var jclass = require("./src/jclass");
 
-A small and lightweight library for working with JavaScript classes.
-
-# API
-----
-The library provides few methods:
-
-- ```.create(constructor)``` - Creates an object by a provided *consturctor*.
-- ```.extends(parentClass, constructor)``` - Creates and inherits an object by provided *parentClass* and *constructor*.
-- ```.func(function)``` - Attaches the provided *function* to the prototype of the constructed object.
-- ```.get(propertyName, getter)``` and ```.set(propertyName, setter)``` - Syntax sugar for accessors. Works just like ```.func()```.
-- ```.finish()``` - Returns the created object.
-
-# Demo
-----
-Let's create a class simple class named ```Point```
-```javascript
+// Let's create a class simple class named 'Point'
 var Point = jclass.create(function(x, y) {
         this.x = x;
         this.y = y;
@@ -25,10 +9,8 @@ var Point = jclass.create(function(x, y) {
         return this.x + ", " + this.y;
     })
     .finish();
-```
 
-Now we can extend it with ```Point3D```
-```javascript
+// Now we can extend it with 'Point3D'
 var Point3D = jclass.extends(Point, function(x, y, z, name) {
         Point.call(this, x, y); // Calling the super constructor
 
@@ -58,24 +40,16 @@ var Point3D = jclass.extends(Point, function(x, y, z, name) {
         //     ^ that way we are using the Point's .toString()
     })
     .finish();
-```
 
-... and after that we can run the following code
-```javascript
 var a = new Point(1, 2);
 console.log(a.toString()); // 1, 2
 console.log(a.__proto__); // { toString: [Function] }
 console.log(a instanceof Point); // true
+
+console.log("------------------");
 
 var b = new Point3D(3, 4, 5, "point");
 console.log(b.getName()); // point
 console.log(b.toString()); // 3, 4, 5
 console.log(b instanceof Point); // true
 console.log(b instanceof Point3D); // true
-```
-
-**Note:** You can run ```npm test``` which executes the demo above (```demo.js```).
-
-# License
-----
-MIT
