@@ -4,7 +4,6 @@
 A small and lightweight library for working with JavaScript classes.
 
 ## API
------------------
 The library provides few methods:
 
 - ```.create(constructor)``` - Creates an object by a provided *consturctor*.
@@ -14,7 +13,6 @@ The library provides few methods:
 - ```.finish()``` - Returns the created object.
 
 ## Demo
-=======
 Let's create a class simple class named ```Point```
 ```javascript
 var Point = jclass.create(function(x, y) {
@@ -77,5 +75,4 @@ console.log(b instanceof Point3D); // true
 **Note:** You can run ```npm test``` which executes the demo above (```demo.js```).
 
 ## License
-----
 MIT
