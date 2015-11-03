@@ -12,7 +12,7 @@ var jclass = (function() {
 
     // Creates an object like .create() but also inherits the prototype of 'parent'
     // Note that the super constructor must be called explicitly by the user
-    jclass.extends = function (parent, constructor) {
+    jclass.extend = function (parent, constructor) {
         this.Obj = constructor;
 
         this.Obj.prototype = Object.create(parent.prototype);

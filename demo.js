@@ -1,6 +1,6 @@
 var jclass = require("./src/jclass");
 
-// Let's create a class simple class named 'Point'
+// Let's create a simple class named 'Point'
 var Point = jclass.create(function(x, y) {
         this.x = x;
         this.y = y;
@@ -11,7 +11,7 @@ var Point = jclass.create(function(x, y) {
     .finish();
 
 // Now we can extend it with 'Point3D'
-var Point3D = jclass.extends(Point, function(x, y, z, name) {
+var Point3D = jclass.extend(Point, function(x, y, z, name) {
         Point.call(this, x, y); // Calling the super constructor
 
         this.z = z;
