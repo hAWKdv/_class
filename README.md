@@ -74,7 +74,7 @@ console.log(b instanceof Point); // true
 console.log(b instanceof Point3D); // true
 ```
 
-**Note:** You can run ```npm test``` which executes the demo above (```demo.js```).
+**Note:** You can run ```npm start``` which executes the demo above (```demo.js```).
 
 ## License
 MIT
