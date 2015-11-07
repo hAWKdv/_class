@@ -18,7 +18,7 @@ describe("jclass", function() {
                 var Object = jclass.create(function () {})
                     .func("toString", function () {});
 
-                expect(Object.Obj.prototype.toString).to.be.not.equal("undefined");
+                expect(Object.Obj.prototype.toString).to.be.not.equal(undefined);
             });
         });
 
@@ -27,7 +27,7 @@ describe("jclass", function() {
                 var Object = jclass.create(function () {})
                     .get("name", function () {});
 
-                expect(Object.Obj.prototype.getName).to.be.not.equal("undefined");
+                expect(Object.Obj.prototype.getName).to.be.not.equal(undefined);
             });
         });
 
@@ -36,7 +36,7 @@ describe("jclass", function() {
                 var Object = jclass.create(function () {})
                     .set("name", function () {});
 
-                expect(Object.Obj.prototype.setName).to.be.not.equal("undefined");
+                expect(Object.Obj.prototype.setName).to.be.not.equal(undefined);
             });
         });
 
