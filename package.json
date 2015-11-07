@@ -4,7 +4,8 @@
   "description": "A small and lightweight library for working with JavaScript classes.",
   "main": "demo.js",
   "scripts": {
-    "test": "node demo.js"
+    "start": "node demo.js",
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,8 @@
     "url": "https://github.com/hAWKdv/jclass/issues"
   },
   "homepage": "https://github.com/hAWKdv/jclass#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "chai": "^3.4.0",
     "mocha": "^2.3.3"
   }
