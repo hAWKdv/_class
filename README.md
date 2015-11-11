@@ -3,6 +3,8 @@
 
 A small and lightweight library for working with JavaScript classes.
 
+**V1.0**
+
 ## API
 The library provides few methods:
 
