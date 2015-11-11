@@ -5,6 +5,12 @@ A small and lightweight library for working with JavaScript classes.
 
 **V1.5**
 
+## Changelog
+The following have been changed/added since *v1.0*:
+
+- ```.get()``` and ```.set()``` are using ```Object.defineProperty``` now.
+- Implemented ```.const()``` for constant/read-only properties.
+
 ## API
 The library provides few methods:
 

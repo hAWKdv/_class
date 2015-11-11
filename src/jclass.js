@@ -28,7 +28,7 @@ var jclass = (function() {
         return this;
     };
 
-    // Uses Object.defineProperty to define the getter of the provided prop
+    // Uses 'Object.defineProperty' to define the getter of the provided prop
     jclass.get = function (propName, getter) {
         Object.defineProperty(this.Obj.prototype, propName, {
             get: getter,
@@ -39,7 +39,7 @@ var jclass = (function() {
         return this;
     };
 
-    // Just like .get() but for the setter
+    // Same as .get() but for the setter accessor
     jclass.set = function (propName, setter) {
         Object.defineProperty(this.Obj.prototype, propName, {
             set: setter,
@@ -50,6 +50,7 @@ var jclass = (function() {
         return this;
     };
 
+    // Creates a read-only property via 'Object.defineProperty'
     jclass.const = function (name, value) {
         Object.defineProperty(this.Obj.prototype, name, {
             value: value,

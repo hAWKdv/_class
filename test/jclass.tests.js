@@ -14,7 +14,7 @@ describe("jclass", function() {
         });
 
         describe(".func()", function() {
-            it("should attach method to the object holder", function () {
+            it("should attach method to the object", function () {
                 var Object = jclass.create(function () {})
                     .func("toString", function () {});
 
@@ -23,7 +23,7 @@ describe("jclass", function() {
         });
 
         describe(".get()", function() {
-            it("should attach getter to the object holder", function () {
+            it("should attach getter to the object", function () {
                 var TestObj = jclass.create(function () {
                         this._name = "obj";
                     })
@@ -52,6 +52,18 @@ describe("jclass", function() {
                 testObj.name = "not_obj";
 
                 expect(testObj._name).to.be.equal("not_obj");
+            });
+        });
+
+        describe(".const()", function() {
+            it("should attach a const to the object", function () {
+                var TestObj = jclass.create(function () {})
+                    .const("PI", 3.14)
+                    .finish();
+
+                var testObj = new TestObj();
+
+                expect(function() { testObj.PI = 0 }).to.throw(TypeError);
             });
         });
 
