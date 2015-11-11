@@ -9,6 +9,7 @@
 var jclass = (function() {
     "use strict";
 
+    // Constructor
     function jclass() {}
 
     // Creates an object and attaches it to 'this.Obj'
@@ -47,22 +48,14 @@ var jclass = (function() {
 
     // Uses 'Object.defineProperty' to define the getter of the provided prop
     jclass.get = function (propName, getter) {
-        Object.defineProperty(this.Obj.prototype, propName, {
-            get: getter,
-            configurable: true,
-            enumerable: true
-        });
+        _accessor.call(this, "get", propName, getter);
 
         return this;
     };
 
     // Same as .get() but for the setter accessor
     jclass.set = function (propName, setter) {
-        Object.defineProperty(this.Obj.prototype, propName, {
-            set: setter,
-            configurable: true,
-            enumerable: true
-        });
+        _accessor.call(this, "set", propName, setter);
 
         return this;
     };
@@ -81,6 +74,17 @@ var jclass = (function() {
     jclass.finish = function () {
         return this.Obj;
     };
+
+    function _accessor(type, propName, accessorFunc) {
+        var defPropObj = {
+            configurable: true,
+            enumerable: true
+        };
+
+        defPropObj[type] = accessorFunc || function () {};
+
+        Object.defineProperty(this.Obj.prototype, propName, defPropObj);
+    }
 
     return jclass;
 }());

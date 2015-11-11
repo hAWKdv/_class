@@ -11,7 +11,7 @@ The following have been changed/added since *v1.0*:
 - ```.get()``` and ```.set()``` are using ```Object.defineProperty``` now.
 - Implemented ```.const()``` for constant/read-only properties.
 - Implemented ```.staticFunc()``` for adding of static functions. [v1.5.1]
-- Added ```this.$super``` property to derived classes (A reference to super class). [v1.5.2]
+- Added ```this.$super``` property to derived classes (A reference to the super class). [v1.5.2]
 
 ## API
 The library provides few methods:
@@ -23,6 +23,10 @@ The library provides few methods:
 - ```.get(propertyName, getter)``` and ```.set(propertyName, setter)``` - Object.defineProperty-based accessors.
 - ```.const(name, value)``` - Creates a constant in the object prototype.
 - ```.finish()``` - Returns the created object. **Warning** unfinished objects will be overwritten on next use of *.create()* or *.extend()*! That's why you must always use *.finish()* after declaration/definition of a class.
+
+Special properties:
+
+- ```this.$super``` - provides a reference to the super class.
 
 ## Demo
 Let's create a simple class named ```Point```
@@ -49,12 +53,12 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
         this.name = name;
     })
 
-    // The following will give us .getName() method
+    // Now we can access '_name' through 'name'
     .get("name", function () {
         return this._name;
     })
 
-    // ... and .setName(val)
+    // ... and set it the same way
     .set("name", function (value) {
         if (!value) {
             console.log("The name is not set.");
