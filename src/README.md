@@ -1,0 +1,1 @@
+Use the minified version of the library (```jclass.min.js```) for browsers.

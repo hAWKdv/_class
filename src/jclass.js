@@ -1,3 +1,11 @@
+/*
+ * jclass
+ * v1.5
+ * Author: hAWK
+ * Repository: https://github.com/hAWKdv/jclass
+ * License: MIT
+ */
+
 var jclass = (function() {
     "use strict";
 
