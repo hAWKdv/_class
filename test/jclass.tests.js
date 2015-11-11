@@ -102,10 +102,18 @@ describe("jclass", function() {
         it("should inherit the parent (Point)", function() {
             var Point = jclass.create(/*function () {}*/).finish(),
                 Point3D = jclass.extend(Point/*, function () {}*/).finish(),
-                xy = new Point3D();
+                xyz = new Point3D();
 
-            expect(xy).to.be.an.instanceof(Point)
+            expect(xyz).to.be.an.instanceof(Point)
                 .and.to.be.an.instanceof(Point3D);
-        })
+        });
+
+        it("should call super class (Point)", function() {
+            var Point = jclass.create(function (x) { this.x = ++x; }).finish(),
+                Point3D = jclass.extend(Point, function (x) { this.$super.call(this, x); }).finish(),
+                xyz = new Point3D(1);
+
+            expect(xyz.x).to.be.equal(2);
+        });
     });
 });

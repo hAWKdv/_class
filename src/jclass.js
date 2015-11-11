@@ -1,6 +1,6 @@
 /*
  * jclass
- * v1.5
+ * v1.5.2
  * Author: hAWK
  * Repository: https://github.com/hAWKdv/jclass
  * License: MIT
@@ -25,6 +25,8 @@ var jclass = (function() {
 
         this.Obj.prototype = Object.create(parent.prototype);
         this.Obj.prototype.constructor = this.Obj;
+
+        this.Obj.prototype.$super = parent;
 
         return this;
     };

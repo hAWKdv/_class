@@ -14,7 +14,7 @@ var Point = jclass.create(function(x, y) {
 
 // Now we can extend it with 'Point3D'
 var Point3D = jclass.extend(Point, function(x, y, z, name) {
-        Point.call(this, x, y); // Calling the super constructor
+        this.$super.call(this, x, y); // Calling the super constructor
 
         this.z = z;
         this.name = name;
@@ -38,7 +38,7 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
         this._name = value;
     })
     .func("toString", function() {
-        return Point.prototype.toString.call(this) + ", " + this.z;
+        return this.$super.prototype.toString.call(this) + ", " + this.z;
         //     ^ that way we are using the Point's .toString()
     })
     .finish();

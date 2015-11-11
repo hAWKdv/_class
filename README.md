@@ -3,14 +3,15 @@
 
 A small and lightweight library for working with JavaScript classes.
 
-**V1.5**
+**V1.5.2**
 
 ## Changelog
 The following have been changed/added since *v1.0*:
 
 - ```.get()``` and ```.set()``` are using ```Object.defineProperty``` now.
-- Implemented ```.staticFunc()``` for adding of static functions.
 - Implemented ```.const()``` for constant/read-only properties.
+- Implemented ```.staticFunc()``` for adding of static functions. [v1.5.1]
+- Added ```this.$super``` property to derived classes (A reference to super class). [v1.5.2]
 
 ## API
 The library provides few methods:
@@ -42,7 +43,7 @@ var Point = jclass.create(function(x, y) {
 Now we can extend it with ```Point3D```
 ```javascript
 var Point3D = jclass.extend(Point, function(x, y, z, name) {
-        Point.call(this, x, y); // Calling the super constructor
+        this.$super.call(this, x, y); // Calling the super constructor
 
         this.z = z;
         this.name = name;
@@ -68,7 +69,7 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
         this._name = value;
     })
     .func("toString", function() {
-        return Point.prototype.toString.call(this) + ", " + this.z;
+        return this.$super.prototype.toString.call(this) + ", " + this.z;
         //     ^ that way we are using the Point's .toString()
     })
     .finish();
