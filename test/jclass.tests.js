@@ -24,19 +24,34 @@ describe("jclass", function() {
 
         describe(".get()", function() {
             it("should attach getter to the object holder", function () {
-                var Object = jclass.create(function () {})
-                    .get("name", function () {});
+                var TestObj = jclass.create(function () {
+                        this._name = "obj";
+                    })
+                    .get("name", function () {
+                        return this._name;
+                    })
+                    .finish();
 
-                expect(Object.Obj.prototype.getName).to.be.not.equal(undefined);
+                var testObj = new TestObj();
+
+                expect(testObj.name).to.be.equal("obj");
             });
         });
 
         describe(".set()", function() {
             it("should attach setter to the object holder", function () {
-                var Object = jclass.create(function () {})
-                    .set("name", function () {});
+                var TestObj = jclass.create(function () {
+                        this._name = "obj";
+                    })
+                    .set("name", function (value) {
+                        this._name = value;
+                    })
+                    .finish();
 
-                expect(Object.Obj.prototype.setName).to.be.not.equal(undefined);
+                var testObj = new TestObj();
+                testObj.name = "not_obj";
+
+                expect(testObj._name).to.be.equal("not_obj");
             });
         });
 

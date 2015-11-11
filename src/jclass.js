@@ -28,16 +28,24 @@ var jclass = (function() {
         return this;
     };
 
-    // Attaches a method .get[propName] (Just syntax sugar for getters and setters)
+    // Uses Object.defineProperty to define the getter of the provided prop
     jclass.get = function(propName, getter) {
-        _accessor.call(this, "get", propName, getter);
+        Object.defineProperty(this.Obj.prototype, propName, {
+            get: getter,
+            configurable: true,
+            enumerable: true
+        });
 
         return this;
     };
 
     // Just like .get() but for the setter
     jclass.set = function(propName, setter) {
-        _accessor.call(this, "set", propName, setter);
+        Object.defineProperty(this.Obj.prototype, propName, {
+            set: setter,
+            configurable: true,
+            enumerable: true
+        });
 
         return this;
     };
@@ -46,18 +54,6 @@ var jclass = (function() {
     jclass.finish = function () {
         return this.Obj;
     };
-
-    // Returns a string of a type 'nameXxxxx'
-    function _filterPropName(name) {
-        return name[0].toUpperCase() + name.toLowerCase().substr(1, name.length);
-    }
-
-    // Accessor functionality
-    function _accessor(type, propName, func) {
-        var name = _filterPropName(propName);
-
-        this.Obj.prototype[type + name] = func;
-    }
 
     return jclass;
 }());

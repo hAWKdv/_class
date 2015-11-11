@@ -15,7 +15,7 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
         Point.call(this, x, y); // Calling the super constructor
 
         this.z = z;
-        this.setName(name);
+        this.name = name;
     })
     // The following will give us .getName() method
     .get("name", function () {
@@ -49,7 +49,7 @@ console.log(a instanceof Point); // true
 console.log("------------------");
 
 var b = new Point3D(3, 4, 5, "point");
-console.log(b.getName()); // point
+console.log(b.name); // point
 console.log(b.toString()); // 3, 4, 5
 console.log(b instanceof Point); // true
 console.log(b instanceof Point3D); // true
