@@ -21,7 +21,7 @@ The library provides few methods:
 - ```.staticFunc(name, function)``` - Attaches the provided *function* to the constructed object. Acts like static function.
 - ```.get(propertyName, getter)``` and ```.set(propertyName, setter)``` - Object.defineProperty-based accessors.
 - ```.const(name, value)``` - Creates a constant in the object prototype.
-- ```.finish()``` - Returns the created object. **Warning** unfinished objects will be overwritten on next use of ```.create``` or ```.extend()```! That's why you must always use ```.finish()``` after declaration/definition of a class.
+- ```.finish()``` - Returns the created object. **Warning** unfinished objects will be overwritten on next use of *.create()* or *.extend()*! That's why you must always use *.finish()* after declaration/definition of a class.
 
 ## Demo
 Let's create a simple class named ```Point```
