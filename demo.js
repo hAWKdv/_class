@@ -8,6 +8,8 @@ var Point = jclass.create(function(x, y) {
     .func("toString", function () {
         return this.x + ", " + this.y;
     })
+    // Defining a constant
+    .const("PI", 3.14)
     .finish();
 
 // Now we can extend it with 'Point3D'
@@ -44,6 +46,8 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
 var a = new Point(1, 2);
 console.log(a.toString()); // 1, 2
 console.log(a.__proto__); // { toString: [Function] }
+a.PI = 123;
+console.log(a.PI); // 3.14
 console.log(a instanceof Point); // true
 
 console.log("------------------");

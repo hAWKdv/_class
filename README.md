@@ -2,6 +2,7 @@
 ========================
 
 A small and lightweight library for working with JavaScript classes.
+
 **V1.5**
 
 ## API
@@ -11,6 +12,7 @@ The library provides few methods:
 - ```.extend(parentClass, constructor)``` - Creates and inherits an object by provided *parentClass* and *constructor*.
 - ```.func(function)``` - Attaches the provided *function* to the prototype of the constructed object.
 - ```.get(propertyName, getter)``` and ```.set(propertyName, setter)``` - Object.defineProperty-based accessors.
+- ```.const(name, value)``` - Creates a constant in the object prototype.
 - ```.finish()``` - Returns the created object.
 
 ## Demo
@@ -23,6 +25,9 @@ var Point = jclass.create(function(x, y) {
     .func("toString", function () {
         return this.x + ", " + this.y;
     })
+    
+    // Defining a constant
+    .const("PI", 3.14)
     .finish();
 ```
 
@@ -66,6 +71,8 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
 var a = new Point(1, 2);
 console.log(a.toString()); // 1, 2
 console.log(a.__proto__); // { toString: [Function] }
+a.PI = 123;
+console.log(a.PI); // 3.14
 console.log(a instanceof Point); // true
 
 var b = new Point3D(3, 4, 5, "point");
