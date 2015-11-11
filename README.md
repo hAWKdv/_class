@@ -9,6 +9,7 @@ A small and lightweight library for working with JavaScript classes.
 The following have been changed/added since *v1.0*:
 
 - ```.get()``` and ```.set()``` are using ```Object.defineProperty``` now.
+- Implemented ```.staticFunc()``` for adding of static functions.
 - Implemented ```.const()``` for constant/read-only properties.
 
 ## API
@@ -16,7 +17,8 @@ The library provides few methods:
 
 - ```.create(constructor)``` - Creates an object by a provided *consturctor*.
 - ```.extend(parentClass, constructor)``` - Creates and inherits an object by provided *parentClass* and *constructor*.
-- ```.func(function)``` - Attaches the provided *function* to the prototype of the constructed object.
+- ```.func(name, function)``` - Attaches the provided *function* to the prototype of the constructed object.
+- ```.staticFunc(name, function)``` - Attaches the provided *function* to the constructed object. Acts like static function.
 - ```.get(propertyName, getter)``` and ```.set(propertyName, setter)``` - Object.defineProperty-based accessors.
 - ```.const(name, value)``` - Creates a constant in the object prototype.
 - ```.finish()``` - Returns the created object.
@@ -72,6 +74,15 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
     .finish();
 ```
 
+Noting that we can define a static class this way:
+```javascript
+var StaticDemo = jclass.create()
+    .staticFunc("sayHello", function() {
+        console.log("Hello!");
+    })
+    .finish();
+```
+
 ... and after that we can run the following code
 ```javascript
 var a = new Point(1, 2);
@@ -86,6 +97,8 @@ console.log(b.name); // point
 console.log(b.toString()); // 3, 4, 5
 console.log(b instanceof Point); // true
 console.log(b instanceof Point3D); // true
+
+StaticDemo.sayHello(); // Hello!
 ```
 
 **Note:** You can run ```npm start``` which executes the demo above (```demo.js```).

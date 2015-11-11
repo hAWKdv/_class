@@ -13,7 +13,7 @@ var jclass = (function() {
 
     // Creates an object and attaches it to 'this.Obj'
     jclass.create = function (constructor) {
-        this.Obj = constructor;
+        this.Obj = constructor || function () {};
 
         return this;
     };
@@ -21,7 +21,7 @@ var jclass = (function() {
     // Creates an object like .create() but also inherits the prototype of 'parent'
     // Note that the super constructor must be called explicitly by the user
     jclass.extend = function (parent, constructor) {
-        this.Obj = constructor;
+        this.Obj = constructor || function () {};
 
         this.Obj.prototype = Object.create(parent.prototype);
         this.Obj.prototype.constructor = this.Obj;
@@ -31,7 +31,14 @@ var jclass = (function() {
 
     // Attaches a method/function to 'this.Obj' prototype
     jclass.func = function (name, func) {
-        this.Obj.prototype[name] = func;
+        this.Obj.prototype[name] = func || function () {};
+
+        return this;
+    };
+
+    // Attaches a static method/function to 'this.Obj'
+    jclass.staticFunc = function (name, func) {
+        this.Obj[name] = func || function () {};
 
         return this;
     };

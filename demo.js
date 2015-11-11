@@ -43,6 +43,13 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
     })
     .finish();
 
+// Noting that we can define a static class this way:
+var StaticDemo = jclass.create()
+    .staticFunc("sayHello", function() {
+        console.log("Hello!");
+    })
+    .finish();
+
 var a = new Point(1, 2);
 console.log(a.toString()); // 1, 2
 console.log(a.__proto__); // { toString: [Function] }
@@ -57,3 +64,7 @@ console.log(b.name); // point
 console.log(b.toString()); // 3, 4, 5
 console.log(b instanceof Point); // true
 console.log(b instanceof Point3D); // true
+
+console.log("------------------");
+
+StaticDemo.sayHello(); // Hello!

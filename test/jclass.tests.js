@@ -7,7 +7,7 @@ describe("jclass", function() {
     describe("core methods", function() {
         describe(".create()", function() {
             it("should be a jclass function (static)", function () {
-                var Object = jclass.create(function () {});
+                var Object = jclass.create(/*function () {}*/);
 
                 expect(Object).to.be.equal(jclass);
             });
@@ -16,9 +16,18 @@ describe("jclass", function() {
         describe(".func()", function() {
             it("should attach method to the object", function () {
                 var Object = jclass.create(function () {})
-                    .func("toString", function () {});
+                    .func("toString"/*, function () {}*/);
 
                 expect(Object.Obj.prototype.toString).to.be.not.equal(undefined);
+            });
+        });
+
+        describe(".staticFunc()", function() {
+            it("should attach static method to the object", function () {
+                var Object = jclass.create(function () {})
+                    .staticFunc("calculateData"/*, function () {}*/);
+
+                expect(Object.Obj.calculateData).to.be.not.equal(undefined);
             });
         });
 
@@ -57,7 +66,7 @@ describe("jclass", function() {
 
         describe(".const()", function() {
             it("should attach a const to the object", function () {
-                var TestObj = jclass.create(function () {})
+                var TestObj = jclass.create(/*function () {}*/)
                     .const("PI", 3.14)
                     .finish();
 
@@ -84,15 +93,15 @@ describe("jclass", function() {
 
     describe("instantiating", function () {
         it("should be instance of the class (Point)", function () {
-            var Point = jclass.create(function () {}).finish(),
+            var Point = jclass.create(/*function () {}*/).finish(),
                 x = new Point();
 
             expect(x).to.be.an.instanceof(Point);
         });
 
         it("should inherit the parent (Point)", function() {
-            var Point = jclass.create(function () {}).finish(),
-                Point3D = jclass.extend(Point, function () {}).finish(),
+            var Point = jclass.create(/*function () {}*/).finish(),
+                Point3D = jclass.extend(Point/*, function () {}*/).finish(),
                 xy = new Point3D();
 
             expect(xy).to.be.an.instanceof(Point)
