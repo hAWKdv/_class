@@ -1,1 +1,1 @@
-Use the minified version of the library (```jclass.min.js```) for browsers.
+Use the minified version of the library (```_class.min.js```) for browsers.

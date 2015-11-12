@@ -1,7 +1,7 @@
-var jclass = require("./src/jclass");
+var _class = require("./src/_class");
 
 // Let's create a simple class named 'Point'
-var Point = jclass.create(function(x, y) {
+var Point = _class.create(function(x, y) {
         this.x = x;
         this.y = y;
     })
@@ -13,7 +13,7 @@ var Point = jclass.create(function(x, y) {
     .finish();
 
 // Now we can extend it with 'Point3D'
-var Point3D = jclass.extend(Point, function(x, y, z, name) {
+var Point3D = _class.extend(Point, function(x, y, z, name) {
         this.$super.call(this, x, y); // Calling the super constructor
 
         this.z = z;
@@ -44,7 +44,7 @@ var Point3D = jclass.extend(Point, function(x, y, z, name) {
     .finish();
 
 // Noting that we can define a static class this way:
-var StaticDemo = jclass.create()
+var StaticDemo = _class.create()
     .staticFunc("sayHello", function() {
         console.log("Hello!");
     })

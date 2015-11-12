@@ -1,12 +1,12 @@
 "use strict";
 
 var expect = require("chai").expect,
-    jclass = require("../src/jclass");
+    jclass = require("../src/_class");
 
-describe("jclass", function() {
+describe("_class", function() {
     describe("core methods", function() {
         describe(".create()", function() {
-            it("should be a jclass function (static)", function () {
+            it("should be a _class function (static)", function () {
                 var Object = jclass.create(/*function () {}*/);
 
                 expect(Object).to.be.equal(jclass);

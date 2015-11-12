@@ -1,6 +1,6 @@
 {
-  "name": "jclass",
-  "version": "1.0.0",
+  "name": "_class",
+  "version": "1.5.2",
   "description": "A small and lightweight library for working with JavaScript classes.",
   "main": "demo.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hAWKdv/jclass.git"
+    "url": "git+https://github.com/hAWKdv/_class.git"
   },
   "author": "hAWKdv",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hAWKdv/jclass/issues"
+    "url": "https://github.com/hAWKdv/_class/issues"
   },
-  "homepage": "https://github.com/hAWKdv/jclass#readme",
+  "homepage": "https://github.com/hAWKdv/_class#readme",
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.0",

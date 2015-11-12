@@ -1,19 +1,19 @@
 /*
- * jclass
+ * _class
  * v1.5.2
  * Author: hAWK
- * Repository: https://github.com/hAWKdv/jclass
+ * Repository: https://github.com/hAWKdv/_class
  * License: MIT
  */
 
-var jclass = (function() {
+var _class = (function() {
     "use strict";
 
     // Constructor
-    function jclass() {}
+    function _class() {}
 
     // Creates an object and attaches it to 'this.Obj'
-    jclass.create = function (constructor) {
+    _class.create = function (constructor) {
         this.Obj = constructor || function () {};
         this.Obj.prototype.constructor = this.Obj;
 
@@ -22,7 +22,7 @@ var jclass = (function() {
 
     // Creates an object like .create() but also inherits the prototype of 'parent'
     // Note that the super constructor must be called explicitly by the user
-    jclass.extend = function (parent, constructor) {
+    _class.extend = function (parent, constructor) {
         this.Obj = constructor || function () {};
 
         this.Obj.prototype = Object.create(parent.prototype);
@@ -34,35 +34,35 @@ var jclass = (function() {
     };
 
     // Attaches a method/function to 'this.Obj' prototype
-    jclass.func = function (name, func) {
+    _class.func = function (name, func) {
         this.Obj.prototype[name] = func || function () {};
 
         return this;
     };
 
     // Attaches a static method/function to 'this.Obj'
-    jclass.staticFunc = function (name, func) {
+    _class.staticFunc = function (name, func) {
         this.Obj[name] = func || function () {};
 
         return this;
     };
 
     // Uses 'Object.defineProperty' to define the getter of the provided prop
-    jclass.get = function (propName, getter) {
+    _class.get = function (propName, getter) {
         _accessor.call(this, "get", propName, getter);
 
         return this;
     };
 
     // Same as .get() but for the setter accessor
-    jclass.set = function (propName, setter) {
+    _class.set = function (propName, setter) {
         _accessor.call(this, "set", propName, setter);
 
         return this;
     };
 
     // Creates a read-only property via 'Object.defineProperty'
-    jclass.const = function (name, value) {
+    _class.const = function (name, value) {
         Object.defineProperty(this.Obj.prototype, name, {
             value: value,
             writable: false
@@ -72,7 +72,7 @@ var jclass = (function() {
     };
 
     // Returns the created object
-    jclass.finish = function () {
+    _class.finish = function () {
         return this.Obj;
     };
 
@@ -87,8 +87,8 @@ var jclass = (function() {
         Object.defineProperty(this.Obj.prototype, propName, defPropObj);
     }
 
-    return jclass;
+    return _class;
 }());
 
 // node
-module.exports = jclass;
+module.exports = _class;
