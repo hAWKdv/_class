@@ -15,6 +15,7 @@ var jclass = (function() {
     // Creates an object and attaches it to 'this.Obj'
     jclass.create = function (constructor) {
         this.Obj = constructor || function () {};
+        this.Obj.prototype.constructor = this.Obj;
 
         return this;
     };
