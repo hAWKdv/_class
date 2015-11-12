@@ -1,10 +1,10 @@
-var jclass = (function() {
+var _class = (function() {
     "use strict";
 
-    function jclass() {}
+    function _class() {}
 
     // Creates an object and attaches it to 'this.Obj'
-    jclass.create = function (constructor) {
+    _class.create = function (constructor) {
         this.Obj = constructor;
 
         return this;
@@ -12,7 +12,7 @@ var jclass = (function() {
 
     // Creates an object like .create() but also inherits the prototype of 'parent'
     // Note that the super constructor must be called explicitly by the user
-    jclass.extend = function (parent, constructor) {
+    _class.extend = function (parent, constructor) {
         this.Obj = constructor;
 
         this.Obj.prototype = Object.create(parent.prototype);
@@ -22,28 +22,28 @@ var jclass = (function() {
     };
 
     // Attaches a method/function to 'this.Obj' prototype
-    jclass.func = function (name, func) {
+    _class.func = function (name, func) {
         this.Obj.prototype[name] = func;
 
         return this;
     };
 
     // Attaches a method .get[propName] (Just syntax sugar for getters and setters)
-    jclass.get = function(propName, getter) {
+    _class.get = function(propName, getter) {
         _accessor.call(this, "get", propName, getter);
 
         return this;
     };
 
     // Just like .get() but for the setter
-    jclass.set = function(propName, setter) {
+    _class.set = function(propName, setter) {
         _accessor.call(this, "set", propName, setter);
 
         return this;
     };
 
     // Returns the created object
-    jclass.finish = function () {
+    _class.finish = function () {
         return this.Obj;
     };
 
@@ -59,8 +59,8 @@ var jclass = (function() {
         this.Obj.prototype[type + name] = func;
     }
 
-    return jclass;
+    return _class;
 }());
 
 // node
-module.exports = jclass;
+module.exports = _class;

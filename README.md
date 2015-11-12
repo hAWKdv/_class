@@ -1,4 +1,4 @@
-![jclass](misc/logo.png)
+![_class](misc/logo.png)
 ========================
 
 A small and lightweight library for working with JavaScript classes.
@@ -17,7 +17,7 @@ The library provides few methods:
 ## Demo
 Let's create a simple class named ```Point```
 ```javascript
-var Point = jclass.create(function(x, y) {
+var Point = _class.create(function(x, y) {
         this.x = x;
         this.y = y;
     })
@@ -29,7 +29,7 @@ var Point = jclass.create(function(x, y) {
 
 Now we can extend it with ```Point3D```
 ```javascript
-var Point3D = jclass.extend(Point, function(x, y, z, name) {
+var Point3D = _class.extend(Point, function(x, y, z, name) {
         Point.call(this, x, y); // Calling the super constructor
 
         this.z = z;

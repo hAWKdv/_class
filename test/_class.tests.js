@@ -1,21 +1,21 @@
 "use strict";
 
 var expect = require("chai").expect,
-    jclass = require("../src/jclass");
+    _class = require("../src/_class");
 
-describe("jclass", function() {
+describe("_class", function() {
     describe("core methods", function() {
         describe(".create()", function() {
-            it("should be a jclass function (static)", function () {
-                var Object = jclass.create(function () {});
+            it("should be a _class function (static)", function () {
+                var Object = _class.create(function () {});
 
-                expect(Object).to.be.equal(jclass);
+                expect(Object).to.be.equal(_class);
             });
         });
 
         describe(".func()", function() {
             it("should attach method to the object holder", function () {
-                var Object = jclass.create(function () {})
+                var Object = _class.create(function () {})
                     .func("toString", function () {});
 
                 expect(Object.Obj.prototype.toString).to.be.not.equal(undefined);
@@ -24,7 +24,7 @@ describe("jclass", function() {
 
         describe(".get()", function() {
             it("should attach getter to the object holder", function () {
-                var Object = jclass.create(function () {})
+                var Object = _class.create(function () {})
                     .get("name", function () {});
 
                 expect(Object.Obj.prototype.getName).to.be.not.equal(undefined);
@@ -33,7 +33,7 @@ describe("jclass", function() {
 
         describe(".set()", function() {
             it("should attach setter to the object holder", function () {
-                var Object = jclass.create(function () {})
+                var Object = _class.create(function () {})
                     .set("name", function () {});
 
                 expect(Object.Obj.prototype.setName).to.be.not.equal(undefined);
@@ -43,7 +43,7 @@ describe("jclass", function() {
         describe(".finish()", function() {
             it("should return ready object", function () {
                 var isItFinished = false,
-                    Point = jclass.create(function () {
+                    Point = _class.create(function () {
                         isItFinished = true;
                     }).finish();
 
@@ -57,15 +57,15 @@ describe("jclass", function() {
 
     describe("instantiating", function () {
         it("should be instance of the class (Point)", function () {
-            var Point = jclass.create(function () {}).finish(),
+            var Point = _class.create(function () {}).finish(),
                 x = new Point();
 
             expect(x).to.be.an.instanceof(Point);
         });
 
         it("should inherit the parent (Point)", function() {
-            var Point = jclass.create(function () {}).finish(),
-                Point3D = jclass.extend(Point, function () {}).finish(),
+            var Point = _class.create(function () {}).finish(),
+                Point3D = _class.extend(Point, function () {}).finish(),
                 xy = new Point3D();
 
             expect(xy).to.be.an.instanceof(Point)
