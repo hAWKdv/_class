@@ -6,7 +6,7 @@
  * License: MIT
  */
 
-var _class = (function() {
+(function(ndModule) {
     "use strict";
 
     // Constructor
@@ -87,8 +87,6 @@ var _class = (function() {
         Object.defineProperty(this.Obj.prototype, propName, defPropObj);
     }
 
-    return _class;
-}());
+    ndModule.exports = _class;
 
-// node
-module.exports = _class;
+}(typeof module === "undefined" ? window : module));
