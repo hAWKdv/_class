@@ -6,7 +6,7 @@
  * License: MIT
  */
 
-(function(ndModule) {
+(function(eObj) {
     "use strict";
 
     // Constructor
@@ -87,6 +87,11 @@
         Object.defineProperty(this.Obj.prototype, propName, defPropObj);
     }
 
-    ndModule.exports = _class;
-
-}(typeof module === "undefined" ? window : module));
+    // Determines if the lib is loaded on browser or in nodeJS
+    if (eObj.node) {
+        eObj.exp.exports = _class;
+    } else {
+        eObj.exp = _class;
+    }
+    
+}(typeof module === "undefined" ? { exp: window } : { exp: module, node: true }));
